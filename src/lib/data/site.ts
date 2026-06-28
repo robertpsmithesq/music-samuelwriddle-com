@@ -21,6 +21,11 @@ export type TopRelease = {
 	description: string;
 };
 
+export type FavoriteCollabs = {
+	songs: TopRelease[];
+	videos: TopRelease[];
+};
+
 export type LinkCard = {
 	title: string;
 	description: string;
@@ -45,6 +50,7 @@ export const navItems: NavItem[] = [
 	{ label: 'Releases', href: '#releases', id: 'releases' },
 	{ label: 'Tracks', href: '#music', id: 'music' },
 	{ label: 'Ideas', href: '#ideas', id: 'ideas' },
+	{ label: 'Collabs', href: '#collabs', id: 'collabs' },
 	{ label: 'About', href: '#about', id: 'about' }
 	// { label: 'Contact', href: '#contact', id: 'contact' }
 ];
@@ -138,6 +144,76 @@ export const topReleases: TopRelease[] = [
 		description: 'The first song we ever wrote'
 	}
 ];
+
+export const favoriteCollabs: FavoriteCollabs = {
+	songs: [
+		{
+			title: 'I Know',
+			release: 'May 2026',
+			platform: 'Spotify',
+			href: 'https://open.spotify.com/track/3xVu3ig9Fj9BSlDIsUkPdq?si=ab00238562d143f0',
+			description: 'Keith Reed'
+		},
+		{
+			title: 'With Jesus',
+			release: 'August 2024',
+			platform: 'Spotify',
+			href: 'https://open.spotify.com/track/6E8dWK3EmiFJsHQYDbc8tn?si=fd86671f547a4c0c',
+			description: 'Radiant House Music'
+		},
+		{
+			title: 'We Will Follow',
+			release: 'June 2023',
+			platform: 'Spotify',
+			href: 'https://open.spotify.com/track/4vsRnRsKqNYlIbeMQclxFM?si=ea7cab027c874d55',
+			description: 'Radiant House Music'
+		},
+		{
+			title: 'Light Up the World',
+			release: 'April 2022',
+			platform: 'Spotify',
+			href: 'https://open.spotify.com/track/2Awztk4mKkIe1WxFqD0e6H?si=ba35e89cdcb145f5',
+			description: 'Radiant House Music'
+		}
+	],
+	videos: [
+		{
+			title: 'Rest On Us',
+			release: 'September 2022',
+			platform: 'YouTube',
+			href: 'https://youtu.be/KhfjQoSNk8I?si=sUzkIGAaeddAZvm_',
+			description: 'Radiant House Music'
+		},
+		{
+			title: 'Awake My Soul',
+			release: 'October 2021',
+			platform: 'YouTube',
+			href: 'https://youtu.be/6mD4IrOCMVY?si=XUAa8XMuOlFfEnD_',
+			description: 'Radiant House Music'
+		},
+		{
+			title: 'I Thank God',
+			release: 'August 2021',
+			platform: 'YouTube',
+			href: 'https://youtu.be/QJ07mTW9BIg?si=eG7AxWsYE6Z0gUNa',
+			description: 'Radiant House Music'
+		},
+		{
+			title: 'We Bow Down',
+			release: 'June 2021',
+			platform: 'YouTube',
+			href: 'https://youtu.be/0XqgNbPX8Wc?si=ifsrVFRT86AE_E6o',
+			description: 'Radiant House Music'
+		},
+		{
+			title: 'Goodness of God',
+			release: 'May 2021',
+			platform: 'YouTube',
+			href: 'https://youtu.be/KZuqEGU25a8?si=1D1OBcyYDdpEUCLB',
+			description: 'Radiant House Music'
+		}
+	]
+};
 
 export const roughIdeas: Recording[] = [
 	{

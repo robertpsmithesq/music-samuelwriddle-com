@@ -1,5 +1,6 @@
 <script lang="ts">
 	import AboutSection from '$lib/components/home/AboutSection.svelte';
+	import FavoriteCollabsSection from '$lib/components/home/FavoriteCollabsSection.svelte';
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
 	import LinksSection from '$lib/components/home/LinksSection.svelte';
 	import RecordingsSection from '$lib/components/home/RecordingsSection.svelte';
@@ -10,6 +11,7 @@
 	import SectionRule from '$lib/components/ui/SectionRule.svelte';
 	import {
 		featuredRecording,
+		favoriteCollabs,
 		listenLinks,
 		navItems,
 		recordings,
@@ -55,6 +57,8 @@
 		recordings={roughIdeas}
 		cardTone="blue"
 	/>
+	<SectionRule />
+	<FavoriteCollabsSection collabs={favoriteCollabs} />
 	<SectionRule />
 	<AboutSection />
 	<SectionRule />

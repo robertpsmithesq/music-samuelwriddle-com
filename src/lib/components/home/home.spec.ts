@@ -1,6 +1,7 @@
 import { render } from 'svelte/server';
 import { describe, expect, it } from 'vitest';
 import AboutSection from './AboutSection.svelte';
+import FavoriteCollabsSection from './FavoriteCollabsSection.svelte';
 import FeaturedRecordingCard from './FeaturedRecordingCard.svelte';
 import HeroSection from './HeroSection.svelte';
 import LinkCard from './LinkCard.svelte';
@@ -9,7 +10,12 @@ import RecordingCard from './RecordingCard.svelte';
 import RecordingsSection from './RecordingsSection.svelte';
 import TopReleaseCard from './TopReleaseCard.svelte';
 import TopReleasesSection from './TopReleasesSection.svelte';
-import type { LinkCard as LinkCardData, Recording, TopRelease } from '$lib/data/site';
+import type {
+	FavoriteCollabs,
+	LinkCard as LinkCardData,
+	Recording,
+	TopRelease
+} from '$lib/data/site';
 
 const recording: Recording = {
 	title: 'Test Song',
@@ -31,6 +37,11 @@ const release: TopRelease = {
 	platform: 'Bandcamp',
 	href: 'https://bandcamp.example/favorite-song',
 	description: 'A live track worth linking to.'
+};
+
+const collabs: FavoriteCollabs = {
+	songs: [{ ...release, title: 'Collab Song', description: 'Released Artist' }],
+	videos: [{ ...release, title: 'Collab Video', platform: 'YouTube', description: 'Video Artist' }]
 };
 
 describe('home components', () => {
@@ -70,6 +81,7 @@ describe('home components', () => {
 		expect(body).toContain('Bandcamp');
 		expect(body).toContain('Listen on Bandcamp');
 		expect(body).toContain('top-release-card');
+		expect(body).toContain('top-release-card-blue');
 		expect(body).not.toContain('song-art');
 	});
 
@@ -125,6 +137,24 @@ describe('home components', () => {
 		expect(body).toContain('flex max-w-3xl flex-col');
 	});
 
+	it('renders a red two-column favorite collabs section', () => {
+		const { body } = render(FavoriteCollabsSection, { props: { collabs } });
+
+		expect(body).toContain('id="collabs"');
+		expect(body).toContain('Favorite');
+		expect(body).toContain('Collabs');
+		expect(body).toContain("We've been delighted to play with some of our friends over the years.");
+		expect(body).toContain('Songs');
+		expect(body).toContain('Videos');
+		expect(body).toContain('Collab Song');
+		expect(body).toContain('Released Artist');
+		expect(body).toContain('Collab Video');
+		expect(body).toContain('Video Artist');
+		expect(body).toContain('accent-red');
+		expect(body).toContain('lg:grid-cols-2');
+		expect(body).toContain('top-release-card-red');
+	});
+
 	it('renders a configurable blue recordings section for rough ideas', () => {
 		const { body } = render(RecordingsSection, {
 			props: {
@@ -151,5 +181,6 @@ describe('home components', () => {
 
 		expect(body).toContain('About');
 		expect(body).toContain('wall of');
+		expect(body).toContain('accent-blue');
 	});
 });

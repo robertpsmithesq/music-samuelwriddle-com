@@ -4,7 +4,7 @@
 
 <section id="about" class="px-4 py-24 md:px-8">
 	<div class="mx-auto max-w-5xl text-center">
-		<SectionHeading title="About" accent="Us" kicker="EST. 2016" />
+		<SectionHeading title="About" accent="Us" accentColor="blue" kicker="EST. 2016" />
 
 		<div class="mx-auto mb-16 max-w-2xl">
 			<p class="text-muted mb-6 text-lg leading-relaxed">
