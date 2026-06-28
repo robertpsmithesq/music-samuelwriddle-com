@@ -113,6 +113,11 @@ body {
 	backdrop-filter: none;
 }
 
+.top-release-card:hover {
+	border-color: rgb(135 206 235 / 0.55);
+	box-shadow: 0 8px 24px rgb(135 206 235 / 0.12);
+}
+
 .site-nav-surface {
 	background: var(--color-nav);
 	border-color: var(--color-line);

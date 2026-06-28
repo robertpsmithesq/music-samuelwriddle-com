@@ -7,7 +7,9 @@ import LinkCard from './LinkCard.svelte';
 import LinksSection from './LinksSection.svelte';
 import RecordingCard from './RecordingCard.svelte';
 import RecordingsSection from './RecordingsSection.svelte';
-import type { LinkCard as LinkCardData, Recording } from '$lib/data/site';
+import TopReleaseCard from './TopReleaseCard.svelte';
+import TopReleasesSection from './TopReleasesSection.svelte';
+import type { LinkCard as LinkCardData, Recording, TopRelease } from '$lib/data/site';
 
 const recording: Recording = {
 	title: 'Test Song',
@@ -21,6 +23,14 @@ const link: LinkCardData = {
 	description: 'Sketches and demos',
 	href: 'https://soundcloud.example',
 	tone: 'red'
+};
+
+const release: TopRelease = {
+	title: 'Favorite Song',
+	release: 'Single',
+	platform: 'Bandcamp',
+	href: 'https://bandcamp.example/favorite-song',
+	description: 'A live track worth linking to.'
 };
 
 describe('home components', () => {
@@ -49,6 +59,18 @@ describe('home components', () => {
 		expect(body).toContain('rel="noopener noreferrer"');
 		expect(body).toContain('SoundCloud');
 		expect(body).toContain('Sketches and demos');
+	});
+
+	it('renders top release cards as external links without song art', () => {
+		const { body } = render(TopReleaseCard, { props: { release } });
+
+		expect(body).toContain('href="https://bandcamp.example/favorite-song"');
+		expect(body).toContain('rel="noopener noreferrer"');
+		expect(body).toContain('Favorite Song');
+		expect(body).toContain('Bandcamp');
+		expect(body).toContain('Listen on Bandcamp');
+		expect(body).toContain('top-release-card');
+		expect(body).not.toContain('song-art');
 	});
 
 	it('renders the hero section with featured recording content', () => {
@@ -88,8 +110,19 @@ describe('home components', () => {
 		expect(links.body).toContain('Now');
 		expect(links.body).toContain('SoundCloud');
 		expect(recordings.body).toContain('Selected');
-		expect(recordings.body).toContain('Recordings');
+		expect(recordings.body).toContain('Tracks');
 		expect(recordings.body).toContain('Second Song');
+	});
+
+	it('renders a top releases section from provided data', () => {
+		const { body } = render(TopReleasesSection, { props: { releases: [release] } });
+
+		expect(body).toContain('id="releases"');
+		expect(body).toContain('Top');
+		expect(body).toContain('Releases');
+		expect(body).toContain('Favorite Song');
+		expect(body).toContain('accent-blue');
+		expect(body).toContain('flex max-w-3xl flex-col');
 	});
 
 	it('renders a configurable blue recordings section for rough ideas', () => {
@@ -99,16 +132,16 @@ describe('home components', () => {
 				title: 'Rough',
 				accent: 'Ideas',
 				accentColor: 'blue',
-				description: 'Loose demos and sketches.',
+				description: 'Some of our demos.',
 				recordings: [recording],
 				cardTone: 'blue'
 			}
 		});
 
-		expect(body).toContain('id="ideas"');
+		expect(body).toContain('id="rough-ideas"');
 		expect(body).toContain('Rough');
 		expect(body).toContain('Ideas');
-		expect(body).toContain('Loose demos and sketches.');
+		expect(body).toContain('Some of our demos');
 		expect(body).toContain('accent-blue');
 		expect(body).toContain('song-art-blue');
 	});

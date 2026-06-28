@@ -13,6 +13,14 @@ export type Recording = {
 	featured: boolean;
 };
 
+export type TopRelease = {
+	title: string;
+	release: string;
+	platform: string;
+	href: string;
+	description: string;
+};
+
 export type LinkCard = {
 	title: string;
 	description: string;
@@ -34,7 +42,8 @@ export function mediaUrl(path: string): string {
 
 export const navItems: NavItem[] = [
 	{ label: 'Platforms', href: '#platforms', id: 'platforms' },
-	{ label: 'Recordings', href: '#music', id: 'music' },
+	{ label: 'Releases', href: '#releases', id: 'releases' },
+	{ label: 'Tracks', href: '#music', id: 'music' },
 	{ label: 'Ideas', href: '#ideas', id: 'ideas' },
 	{ label: 'About', href: '#about', id: 'about' }
 	// { label: 'Contact', href: '#contact', id: 'contact' }
@@ -105,6 +114,30 @@ export const recordings: Recording[] = [
 
 export const featuredRecording: Recording =
 	recordings.find((x) => x.featured === true) ?? recordings[0];
+
+export const topReleases: TopRelease[] = [
+	{
+		title: 'Until We Meet Again',
+		release: 'October 2021',
+		platform: 'SoundCloud',
+		href: 'https://soundcloud.com/riddlemes4m/until-we-meet-again',
+		description: 'One of our favorite melodies'
+	},
+	{
+		title: 'Revolting',
+		release: 'April 2021',
+		platform: 'SoundCloud',
+		href: 'https://soundcloud.com/riddlemes4m/revolting',
+		description: 'One of our earliest forays into darker riffs'
+	},
+	{
+		title: 'Dying on the Inside',
+		release: 'November 2021',
+		platform: 'SoundCloud',
+		href: 'https://soundcloud.com/riddlemes4m/dying-on-the-inside',
+		description: 'The first song we ever wrote'
+	}
+];
 
 export const roughIdeas: Recording[] = [
 	{

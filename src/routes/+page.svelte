@@ -3,6 +3,7 @@
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
 	import LinksSection from '$lib/components/home/LinksSection.svelte';
 	import RecordingsSection from '$lib/components/home/RecordingsSection.svelte';
+	import TopReleasesSection from '$lib/components/home/TopReleasesSection.svelte';
 	import BackgroundStripes from '$lib/components/site/BackgroundStripes.svelte';
 	import SiteFooter from '$lib/components/site/SiteFooter.svelte';
 	import SiteNav from '$lib/components/site/SiteNav.svelte';
@@ -13,7 +14,8 @@
 		navItems,
 		recordings,
 		roughIdeas,
-		siteTitle
+		siteTitle,
+		topReleases
 	} from '$lib/data/site';
 
 	const heroDescription =
@@ -22,7 +24,7 @@
 
 <svelte:head>
 	<title>{siteTitle}</title>
-	<meta name="description" content="Riddle Me This band recordings and demos" />
+	<meta name="description" content="Riddle Me This band releases, tracks, and demos" />
 </svelte:head>
 
 <BackgroundStripes />
@@ -40,6 +42,8 @@
 		links={listenLinks}
 	/>
 	<SectionRule />
+	<TopReleasesSection releases={topReleases} />
+	<SectionRule />
 	<RecordingsSection {recordings} />
 	<SectionRule />
 	<RecordingsSection
@@ -47,7 +51,7 @@
 		title="Rough"
 		accent="Ideas"
 		accentColor="blue"
-		description="Loose demos, fragments, and sketches that might turn into something."
+		description="Some of our demos that might turn into something."
 		recordings={roughIdeas}
 		cardTone="blue"
 	/>

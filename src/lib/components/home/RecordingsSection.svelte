@@ -17,8 +17,8 @@
 		recordings,
 		id = 'music',
 		title = 'Selected',
-		accent = 'Recordings',
-		description = "Some of the tracks we're working on.",
+		accent = 'Tracks',
+		description = "Some of the recordings we're working on.",
 		accentColor = 'red',
 		cardTone = 'red'
 	}: Props = $props();

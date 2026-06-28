@@ -7,7 +7,8 @@ import type { NavItem } from '$lib/data/site';
 
 const items: NavItem[] = [
 	{ label: 'Platforms', href: '#platforms', id: 'platforms' },
-	{ label: 'Recordings', href: '#music', id: 'music' }
+	{ label: 'Releases', href: '#releases', id: 'releases' },
+	{ label: 'Tracks', href: '#music', id: 'music' }
 ];
 
 describe('site components', () => {
@@ -16,6 +17,7 @@ describe('site components', () => {
 
 		expect(body).toContain('aria-label="Primary navigation"');
 		expect(body).toContain('href="#platforms"');
+		expect(body).toContain('href="#releases"');
 		expect(body).toContain('href="#music"');
 		expect(body).toContain('aria-expanded="false"');
 	});
