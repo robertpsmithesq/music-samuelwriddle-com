@@ -1,7 +1,7 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import LinksSection from './LinksSection.svelte';
-	import { contactLinks, listenLinks } from '$lib/data/site';
+	import { listenLinks } from '$lib/data/site';
 
 	const { Story } = defineMeta({
 		title: 'Home/LinksSection',

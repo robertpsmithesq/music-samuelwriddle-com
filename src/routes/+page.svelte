@@ -7,7 +7,14 @@
 	import SiteFooter from '$lib/components/site/SiteFooter.svelte';
 	import SiteNav from '$lib/components/site/SiteNav.svelte';
 	import SectionRule from '$lib/components/ui/SectionRule.svelte';
-	import { featuredRecording, listenLinks, navItems, recordings, siteTitle } from '$lib/data/site';
+	import {
+		featuredRecording,
+		listenLinks,
+		navItems,
+		recordings,
+		roughIdeas,
+		siteTitle
+	} from '$lib/data/site';
 
 	const heroDescription =
 		"We're always working on new music! A lot of our ideas are still demos. We're hoping to start releasing music across all major streaming platforms within the next year.";
@@ -34,6 +41,16 @@
 	/>
 	<SectionRule />
 	<RecordingsSection {recordings} />
+	<SectionRule />
+	<RecordingsSection
+		id="ideas"
+		title="Rough"
+		accent="Ideas"
+		accentColor="blue"
+		description="Loose demos, fragments, and sketches that might turn into something."
+		recordings={roughIdeas}
+		cardTone="blue"
+	/>
 	<SectionRule />
 	<AboutSection />
 	<SectionRule />

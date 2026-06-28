@@ -35,6 +35,7 @@ export function mediaUrl(path: string): string {
 export const navItems: NavItem[] = [
 	{ label: 'Platforms', href: '#platforms', id: 'platforms' },
 	{ label: 'Recordings', href: '#music', id: 'music' },
+	{ label: 'Ideas', href: '#ideas', id: 'ideas' },
 	{ label: 'About', href: '#about', id: 'about' }
 	// { label: 'Contact', href: '#contact', id: 'contact' }
 ];
@@ -104,6 +105,69 @@ export const recordings: Recording[] = [
 
 export const featuredRecording: Recording =
 	recordings.find((x) => x.featured === true) ?? recordings[0];
+
+export const roughIdeas: Recording[] = [
+	{
+		title: 'Another Sound of Sadness',
+		year: 'Demo',
+		audioPath: 'audio/sam/demos/Another Sound of Sadness - Demo - Audio.mp3',
+		featured: false
+	},
+	{
+		title: 'Demo 15',
+		year: 'Demo',
+		audioPath: 'audio/sam/demos/Demo 15.mp3',
+		featured: false
+	},
+	{
+		title: 'Demo 26',
+		year: 'Demo',
+		audioPath: 'audio/sam/demos/Demo 26.mp3',
+		featured: false
+	},
+	{
+		title: 'Demo 27',
+		year: 'Demo',
+		audioPath: 'audio/sam/demos/Demo 27.mp3',
+		featured: false
+	},
+	{
+		title: 'Demo 28',
+		year: 'Demo',
+		audioPath: 'audio/sam/demos/Demo 28.mp3',
+		featured: false
+	},
+	{
+		title: 'Demo 30',
+		year: 'Demo',
+		audioPath: 'audio/sam/demos/Demo 30.mp3',
+		featured: false
+	},
+	{
+		title: 'Demo 31',
+		year: 'Demo',
+		audioPath: 'audio/sam/demos/Demo 31.mp3',
+		featured: false
+	},
+	{
+		title: 'Demo 34',
+		year: 'Demo',
+		audioPath: 'audio/sam/demos/Demo 34.mp3',
+		featured: false
+	},
+	{
+		title: 'Demo 39',
+		year: 'Demo',
+		audioPath: 'audio/sam/demos/Demo 39.mp3',
+		featured: false
+	},
+	{
+		title: 'Slither',
+		year: 'Demo',
+		audioPath: 'audio/sam/demos/Slither - Demo.mp3',
+		featured: false
+	}
+];
 
 export const listenLinks: LinkCard[] = [
 	{

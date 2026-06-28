@@ -92,6 +92,27 @@ describe('home components', () => {
 		expect(recordings.body).toContain('Second Song');
 	});
 
+	it('renders a configurable blue recordings section for rough ideas', () => {
+		const { body } = render(RecordingsSection, {
+			props: {
+				id: 'rough-ideas',
+				title: 'Rough',
+				accent: 'Ideas',
+				accentColor: 'blue',
+				description: 'Loose demos and sketches.',
+				recordings: [recording],
+				cardTone: 'blue'
+			}
+		});
+
+		expect(body).toContain('id="ideas"');
+		expect(body).toContain('Rough');
+		expect(body).toContain('Ideas');
+		expect(body).toContain('Loose demos and sketches.');
+		expect(body).toContain('accent-blue');
+		expect(body).toContain('song-art-blue');
+	});
+
 	it('renders the about section copy', () => {
 		const { body } = render(AboutSection);
 
