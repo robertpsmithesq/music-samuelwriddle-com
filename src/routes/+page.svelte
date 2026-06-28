@@ -1,13 +1,24 @@
 <script lang="ts">
 	import AboutSection from '$lib/components/home/AboutSection.svelte';
+	import FavoriteCollabsSection from '$lib/components/home/FavoriteCollabsSection.svelte';
 	import HeroSection from '$lib/components/home/HeroSection.svelte';
 	import LinksSection from '$lib/components/home/LinksSection.svelte';
 	import RecordingsSection from '$lib/components/home/RecordingsSection.svelte';
+	import TopReleasesSection from '$lib/components/home/TopReleasesSection.svelte';
 	import BackgroundStripes from '$lib/components/site/BackgroundStripes.svelte';
 	import SiteFooter from '$lib/components/site/SiteFooter.svelte';
 	import SiteNav from '$lib/components/site/SiteNav.svelte';
 	import SectionRule from '$lib/components/ui/SectionRule.svelte';
-	import { featuredRecording, listenLinks, navItems, recordings, siteTitle } from '$lib/data/site';
+	import {
+		featuredRecording,
+		favoriteCollabs,
+		listenLinks,
+		navItems,
+		recordings,
+		roughIdeas,
+		siteTitle,
+		topReleases
+	} from '$lib/data/site';
 
 	const heroDescription =
 		"We're always working on new music! A lot of our ideas are still demos. We're hoping to start releasing music across all major streaming platforms within the next year.";
@@ -15,7 +26,7 @@
 
 <svelte:head>
 	<title>{siteTitle}</title>
-	<meta name="description" content="Riddle Me This band recordings and demos" />
+	<meta name="description" content="Riddle Me This band releases, tracks, and demos" />
 </svelte:head>
 
 <BackgroundStripes />
@@ -33,7 +44,21 @@
 		links={listenLinks}
 	/>
 	<SectionRule />
+	<TopReleasesSection releases={topReleases} />
+	<SectionRule />
 	<RecordingsSection {recordings} />
+	<SectionRule />
+	<RecordingsSection
+		id="ideas"
+		title="Rough"
+		accent="Ideas"
+		accentColor="blue"
+		description="Some of our demos that might turn into something."
+		recordings={roughIdeas}
+		cardTone="blue"
+	/>
+	<SectionRule />
+	<FavoriteCollabsSection collabs={favoriteCollabs} />
 	<SectionRule />
 	<AboutSection />
 	<SectionRule />
