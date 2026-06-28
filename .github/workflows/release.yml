@@ -1,0 +1,62 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Generate next release tag
+        id: tag
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git fetch --force --tags
+
+          year="$(date -u +%Y)"
+          last_increment="$(
+            git tag --list "${year}.*" \
+              | sed -nE "s/^${year}\.([0-9]+)$/\1/p" \
+              | sort -n \
+              | tail -n 1
+          )"
+
+          if [[ -z "${last_increment}" ]]; then
+            next_increment=1
+          else
+            next_increment=$((last_increment + 1))
+          fi
+
+          tag="${year}.${next_increment}"
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+
+      - name: Create and push tag
+        run: |
+          git tag "${{ steps.tag.outputs.tag }}"
+          git push origin "${{ steps.tag.outputs.tag }}"
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          generate_release_notes: true
+          draft: false
+          prerelease: false
