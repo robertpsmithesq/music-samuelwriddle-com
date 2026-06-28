@@ -1,0 +1,211 @@
+:root {
+	--color-page: #000000;
+	--color-page-text: #ffffff;
+	--color-text-muted: rgb(255 255 255 / 0.65);
+	--color-text-faint: rgb(255 255 255 / 0.4);
+	--color-line: rgb(255 255 255 / 0.08);
+	--color-card: rgb(255 255 255 / 0.04);
+	--color-card-border: rgb(255 255 255 / 0.08);
+	--color-card-border-hover: rgb(220 20 60 / 0.4);
+	--color-badge: rgb(255 255 255 / 0.07);
+	--color-badge-border: rgb(255 255 255 / 0.15);
+	--color-nav: rgb(0 0 0 / 0.85);
+	--color-nav-menu: rgb(0 0 0 / 0.95);
+	--color-red: #dc143c;
+	--color-red-hot: #ff2400;
+	--color-blue: #87ceeb;
+	--color-blue-soft: #b0d4f1;
+	--gradient-red: linear-gradient(135deg, var(--color-red-hot), var(--color-red));
+	--gradient-blue: linear-gradient(135deg, var(--color-blue-soft), var(--color-blue));
+	--gradient-title: linear-gradient(
+		135deg,
+		var(--color-red-hot) 0%,
+		var(--color-red) 35%,
+		#ffffff 50%,
+		var(--color-blue-soft) 65%,
+		var(--color-blue) 100%
+	);
+	--gradient-rule: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--color-red) 30%,
+		rgb(255 255 255 / 0.12) 50%,
+		var(--color-blue) 70%,
+		transparent 100%
+	);
+	--gradient-art-red: linear-gradient(160deg, #1a0000, #3a0a0a, #1a0000);
+	--gradient-art-blue: linear-gradient(160deg, #000a1a, #0a1a2a, #000a1a);
+}
+
+body {
+	background: var(--color-page);
+	color: var(--color-page-text);
+}
+
+.text-muted {
+	color: var(--color-text-muted);
+}
+
+.text-faint {
+	color: var(--color-text-faint);
+}
+
+.accent-red {
+	color: var(--color-red);
+}
+
+.accent-blue {
+	color: var(--color-blue);
+}
+
+.hero-gradient-text {
+	background: var(--gradient-title);
+	background-size: 200% 200%;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: hero-shift 10s ease infinite;
+}
+
+.stripe-red {
+	background: var(--gradient-red);
+}
+
+.stripe-blue {
+	background: var(--gradient-blue);
+}
+
+.section-rule-gradient {
+	background: var(--gradient-rule);
+}
+
+.surface-card {
+	background: var(--color-card);
+	border-color: var(--color-card-border);
+	backdrop-filter: blur(8px);
+	transition:
+		transform 0.25s ease,
+		border-color 0.25s ease,
+		box-shadow 0.25s ease;
+}
+
+.surface-card:hover {
+	border-color: var(--color-card-border-hover);
+	box-shadow: 0 8px 24px rgb(0 0 0 / 0.15);
+	transform: translateY(-2px);
+}
+
+.audio-card,
+.audio-card:hover {
+	background: #080808;
+	border-color: #262626;
+	box-shadow: none;
+	transform: none;
+}
+
+.audio-card {
+	transition: none;
+}
+
+.link-card-solid {
+	background: #080808;
+	border-color: #262626;
+	backdrop-filter: none;
+}
+
+.site-nav-surface {
+	background: var(--color-nav);
+	border-color: var(--color-line);
+	backdrop-filter: blur(12px);
+}
+
+.mobile-menu-surface {
+	background: var(--color-nav-menu);
+	backdrop-filter: blur(10px);
+}
+
+.primary-gradient {
+	background: var(--gradient-red);
+}
+
+.primary-gradient:hover {
+	box-shadow: 0 4px 16px rgb(220 20 60 / 0.35);
+}
+
+.secondary-action {
+	border-color: rgb(255 255 255 / 0.25);
+	color: var(--color-page-text);
+}
+
+.secondary-action:hover {
+	background: rgb(135 206 235 / 0.06);
+	border-color: var(--color-blue);
+	color: var(--color-blue);
+}
+
+.tag-surface {
+	background: var(--color-badge);
+	border-color: var(--color-badge-border);
+	color: rgb(255 255 255 / 0.8);
+}
+
+.tag-surface:hover {
+	border-color: var(--color-red);
+	color: var(--color-red);
+}
+
+.song-art {
+	position: relative;
+	overflow: hidden;
+}
+
+.song-art-red {
+	background: var(--gradient-art-red);
+}
+
+.song-art-blue {
+	background: var(--gradient-art-blue);
+}
+
+.song-art::before {
+	position: absolute;
+	inset: 0;
+	content: '';
+	background: repeating-linear-gradient(
+		-45deg,
+		transparent,
+		transparent 8px,
+		rgb(255 255 255 / 0.03) 8px,
+		rgb(255 255 255 / 0.03) 9px
+	);
+	pointer-events: none;
+}
+
+.song-art-red::after,
+.song-art-blue::after {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 3px;
+	content: '';
+}
+
+.song-art-red::after {
+	background: var(--gradient-red);
+}
+
+.song-art-blue::after {
+	background: var(--gradient-blue);
+}
+
+@keyframes hero-shift {
+	0%,
+	100% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+}
